@@ -1,10 +1,9 @@
 class Solution {
     public int possibleStringCount(String word) {
         // HashMap<Character,Integer> map = new HashMap<>();
-        int n = word.length();
         int count = 1;
 
-        for(int i =0; i<n-1; i++){
+        for(int i =0; i<word.length()-1; i++){
             char ch = word.charAt(i);
             char ch1 = word.charAt(i+1);
 
