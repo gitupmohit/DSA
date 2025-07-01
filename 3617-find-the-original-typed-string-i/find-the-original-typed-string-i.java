@@ -1,6 +1,6 @@
 class Solution {
     public int possibleStringCount(String word) {
-        HashMap<Character,Integer> map = new HashMap<>();
+        // HashMap<Character,Integer> map = new HashMap<>();
         int count = 1;
         int n = word.length();
 
