@@ -1,5 +1,6 @@
 class Solution {
     public int findLucky(int[] arr) {
+        Arrays.sort(arr);
         int n = arr.length;
         HashMap<Integer, Integer> map = new HashMap<>();
 
@@ -10,7 +11,8 @@ class Solution {
         int ans = -1;
         for (int i = n-1; i >= 0; i--) {
             if (map.get(arr[i]) == arr[i]) {
-                ans = Math.max(ans, arr[i]);
+                ans = arr[i];
+                break;
             }
         }
         return ans;
