@@ -8,13 +8,11 @@ class Solution {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
 
-        int ans = -1;
         for (int i = n-1; i >= 0; i--) {
             if (map.get(arr[i]) == arr[i]) {
-                ans = arr[i];
-                break;
+                return arr[i];
             }
         }
-        return ans;
+        return -1;
     }
 }
