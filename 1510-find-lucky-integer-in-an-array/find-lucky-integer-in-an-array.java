@@ -8,7 +8,7 @@ class Solution {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
 
-        for (int i = 0; i < n; i++) {
+        for (int i = n-1; i >= 0; i--) {
             if (map.get(arr[i]) == arr[i]) {
                 ans = Math.max(ans, arr[i]);
             }
