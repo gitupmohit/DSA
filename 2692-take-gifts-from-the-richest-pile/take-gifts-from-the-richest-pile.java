@@ -2,23 +2,20 @@ class Solution {
     public long pickGifts(int[] gifts, int k) {
         int n = gifts.length;
 
+        PriorityQueue<Integer> pq = new PriorityQueue<>((a,b) -> Integer.compare(b,a));
+        for(int i=0; i<n; i++){
+            pq.offer(gifts[i]);
+        }
         for(int i=0; i<k; i++){
-            int index =0;
-            int max =Integer.MIN_VALUE;
-            int val =0;
-            while(index<n){
-                if(gifts[index] > max){
-                    val = index;
-                    max = gifts[index];
-                }
-                index++;
-            }
-            gifts[val] = (int)Math.floor(Math.sqrt(max));
+            int val = pq.poll();
+            val = (int)Math.floor(Math.sqrt(val));
+            pq.offer(val);
         }
-        long sum = 0;
-        for(int it : gifts){
-            sum+=it;
+        int size = pq.size();
+        long sum =0;
+        for(int i=0; i<size; i++){
+            sum = sum + pq.poll();
         }
-        return (long)sum;
+        return sum;
     }
 }
