@@ -3,8 +3,8 @@ class Solution {
         int n = nums.length;
         int k =-1;
         int l =-1;
-        // int[] arr = new int[2];
-        // int index =0;
+        int[] arr = new int[2];
+        int index =0;
         // HashSet<Integer> set = new HashSet<>();
 
         // for(int i=0; i<n; i++){
@@ -28,16 +28,26 @@ class Solution {
         // return arr;
 
         int[] hash = new int[n];
-        for(int i=0; i<n; i++){
+
+        // for(int i=0; i<n; i++){
+        //     if(hash[nums[i]] == 1){
+        //         if(k == -1){
+        //             k=nums[i];
+        //         }else{
+        //             l =nums[i];
+        //         }
+        //     }
+        //     hash[nums[i]]++;
+        // }
+        // return new int[] {k,l};
+
+          for(int i=0; i<n; i++){
             if(hash[nums[i]] == 1){
-                if(k == -1){
-                    k=nums[i];
-                }else{
-                    l =nums[i];
-                }
+                arr[index] = nums[i];
+                index++;
             }
             hash[nums[i]]++;
-        }
-        return new int[] {k,l};
+        }  
+        return arr;
     }
 }
