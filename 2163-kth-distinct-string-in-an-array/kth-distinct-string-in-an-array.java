@@ -2,7 +2,7 @@ class Solution {
     public String kthDistinct(String[] arr, int k) {
         int n = arr.length;
         HashMap<String, Integer> map = new HashMap<>();
-        String s = "";
+        // String s = "";
 
         for(int i=0; i<n; i++){
             map.put(arr[i] , map.getOrDefault(arr[i] , 0) + 1);
@@ -13,10 +13,11 @@ class Solution {
                 k--;
             }
             if(k == 0){
-                s+=arr[i];
-                break; 
+                // s+=arr[i];
+                // break; 
+                return arr[i];
             }
         }
-        return s;
+        return "";
     }
 }
