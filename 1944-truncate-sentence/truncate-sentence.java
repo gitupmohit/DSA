@@ -1,7 +1,7 @@
 class Solution {
     public String truncateSentence(String s, int k) {
         int count = 0;
-        String ss= "";
+        StringBuilder ss= new StringBuilder();
         int n = s.length();
 
         for(int i= 0; i<n; i++){
@@ -12,8 +12,8 @@ class Solution {
             if(count == k){
                 break;
             }
-            ss+=ch;
+            ss.append(ch);
         }
-        return ss;
+        return ss.toString();
     }
 }
