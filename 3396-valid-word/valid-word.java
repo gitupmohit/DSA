@@ -18,13 +18,6 @@ class Solution {
                 return false;
             }
         }
-        // if(digit == false && consonant == false){
-        //     return false;
-        // }else if(vowel == false){
-        //     return false;
-        // }else if(consonant == false){
-        //     return false;
-        // }else return true;
         return vowel && consonant;
        
 
