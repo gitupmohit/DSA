@@ -7,13 +7,13 @@ class Solution {
             max = Math.max(max,nums[i]);
         }
 
-        HashSet<Integer> set = new HashSet<>();
+        HashMap<Integer,Integer> map = new HashMap<>();
         for(int i=0; i<n; i++){
-            set.add(nums[i]);
+            map.put(nums[i] , 1);
         }
 
         for(int i= 1; i<max; i++){
-            if(!set.contains(i)){
+            if(!map.containsKey(i)){
                 return i;
             }
         }
