@@ -10,11 +10,11 @@ class Solution {
         int start = 1; 
         int end = max;
 
-        while (start <= end) {
+        while (start < end) {
             int mid = start + (end - start) / 2;
             int val = calc(nums, mid);
             if (val <= threshold) {
-                end = mid - 1;
+                end = mid;
             } else {
                 start = mid + 1;
             }
