@@ -1,21 +1,19 @@
 class Solution {
     public int mostFrequentEven(int[] nums) {
-        int n = nums.length;
-        int[] hash = new int[100000];
-        for(int i=0; i<n; i++){
-            if(nums[i] % 2 == 0){
-                hash[nums[i]]++;
+        int[] hash = new int[100001];
+        int maxFreq = 0;
+        int result = -1;
+
+        for (int num : nums) {
+            if (num % 2 == 0) {
+                hash[num]++;
+                if (hash[num] > maxFreq || (hash[num] == maxFreq && num < result)) {
+                    maxFreq = hash[num];
+                    result = num;
+                }
             }
         }
-        int count = 0;
-        int val = -1;
-        Arrays.sort(nums);
-        for(int i=0; i<n; i++){
-            if(hash[nums[i]] > count){
-                count = hash[nums[i]];
-                val = nums[i];
-            }
-        }
-        return val;
+
+        return result;
     }
 }
