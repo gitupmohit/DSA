@@ -1,44 +1,37 @@
 class Solution {
     public boolean isValidSudoku(char[][] board) {
-        int n = board.length;
+        HashSet<Character>[] rows = new HashSet[9];
+        HashSet<Character>[] cols = new HashSet[9];
+        HashSet<Character>[][] boxes = new HashSet[3][3]; // 3x3 grid of boxes
 
-        // Check rows
-        for (int i = 0; i < n; i++) {
-            HashSet<Character> rowSet = new HashSet<>();
-            for (int j = 0; j < n; j++) {
-                char ch = board[i][j];
-                if (ch == '.') continue;
-                if (rowSet.contains(ch)) return false;
-                rowSet.add(ch);
-            }
+        for (int i = 0; i < 9; i++) {
+            rows[i] = new HashSet<>();
+            cols[i] = new HashSet<>();
         }
 
-        // Check columns
-        for (int j = 0; j < n; j++) {
-            HashSet<Character> colSet = new HashSet<>();
-            for (int i = 0; i < n; i++) {
-                char ch = board[i][j];
-                if (ch == '.') continue;
-                if (colSet.contains(ch)) return false;
-                colSet.add(ch);
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++)
+                boxes[i][j] = new HashSet<>();
+
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                char val = board[i][j];
+
+                if (val == '.') continue;
+
+                // Check row
+                if (rows[i].contains(val)) return false;
+                rows[i].add(val);
+
+                // Check column
+                if (cols[j].contains(val)) return false;
+                cols[j].add(val);
+
+                // Check box
+                if (boxes[i / 3][j / 3].contains(val)) return false;
+                boxes[i / 3][j / 3].add(val);
             }
         }
-
-        // Check 3x3 boxes
-        for (int boxRow = 0; boxRow < 9; boxRow += 3) {
-            for (int boxCol = 0; boxCol < 9; boxCol += 3) {
-                HashSet<Character> boxSet = new HashSet<>();
-                for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                        char ch = board[boxRow + i][boxCol + j];
-                        if (ch == '.') continue;
-                        if (boxSet.contains(ch)) return false;
-                        boxSet.add(ch);
-                    }
-                }
-            }
-        }
-
         return true;
     }
 }
