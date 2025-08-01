@@ -31,7 +31,7 @@ class Solution {
         int k = list.size();
         if (k % 2 == 0) {
             int kk = k / 2;
-            return ((double)(list.get(kk - 1) + list.get(kk)) / 2);  // fixed off-by-one
+            return ((double)(list.get(kk - 1) + list.get(kk)) / 2);
         } else {
             return (double)(list.get(k / 2));
         }
