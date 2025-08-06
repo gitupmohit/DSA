@@ -15,19 +15,16 @@
  */
 class Solution {
     public int countNodes(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        if (root == null) return result.size();
+    List<Integer> result = new ArrayList<>();
+    helper(root, result);
+    return result.size(); // number of nodes
+}
 
-        Stack<TreeNode> st = new Stack<>();
-        st.add(root);
+private void helper(TreeNode root, List<Integer> result) {
+    if (root == null) return;
+    result.add(root.val);
+    helper(root.left, result);
+    helper(root.right, result);
+}
 
-        while(!st.isEmpty()){
-            TreeNode node = st.pop();
-            result.add(node.val);
-
-            if(node.right != null) st.add(node.right);
-            if(node.left != null) st.add(node.left);
-        }
-        return result.size();
-    }
 }
