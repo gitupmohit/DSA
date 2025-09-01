@@ -16,17 +16,12 @@ class Solution {
             list.add(temp.val);
             temp = temp.next;
         }
-        int n = list.size();
-        int[] arr = new int[n];
-        for(int i=0; i<n; i++){
-            arr[i] = list.get(i);
-        }
-        Arrays.sort(arr);
+        Collections.sort(list);
 
         int i =0;
         ListNode output = head;
         while(output != null){
-            output.val = arr[i];
+            output.val = list.get(i);
             output = output.next;
             i++;
         }
