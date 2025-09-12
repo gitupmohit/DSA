@@ -1,14 +1,9 @@
 class Solution {
     public boolean doesAliceWin(String s) {
-        // int c = 0;
-        char[] ch = s.toCharArray();
-        String ss = "aeiou";
+        for(int i=0;i<s.length();i++){
+            int ch=s.charAt(i);
+            if(ch=='a' || ch=='e' ||ch=='i' ||ch=='o' ||ch=='u') return true;
 
-        for(char cc : ch){
-            if(ss.indexOf(cc) != -1){
-                return true;
-            }
-        }
-        return false;
+        } return false;
     }
 }
