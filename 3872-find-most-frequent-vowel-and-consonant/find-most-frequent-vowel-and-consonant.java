@@ -4,22 +4,15 @@ class Solution {
         int con =0;
         int n = s.length();
         HashMap<Character,Integer> map = new HashMap<>();
+        String ss = "aeiou";
         for(int i=0;i<n;i++){
             char ch = s.charAt(i);
-            if(map.containsKey(ch)){
-                map.put(ch,map.get(ch)+1);
+            map.put(ch , map.getOrDefault(ch , 0) +1);
+            int val = map.get(ch);
+            if(ss.indexOf(ch) != -1){
+                vow = Math.max(val , vow);
             }else{
-                map.put(ch,1);
-            }
-        }
-        for(int i=0;i<n;i++){
-            char ch = s.charAt(i);
-            if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u'){
-                int maxi = map.get(ch);
-                vow =Math.max(maxi,vow);
-            }else{
-                int maxi2 = map.get(ch);
-                con = Math.max(maxi2,con);
+                con = Math.max(con , val);
             }
         }
         return vow+con;
