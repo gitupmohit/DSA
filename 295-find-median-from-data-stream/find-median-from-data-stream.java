@@ -1,31 +1,30 @@
 class MedianFinder {
-    // Max-heap for smaller half
-    PriorityQueue<Integer> small;
-    // Min-heap for larger half
-    PriorityQueue<Integer> large;
+    private PriorityQueue<Integer> maxHeap; // left half
+    private PriorityQueue<Integer> minHeap; // right half
 
     public MedianFinder() {
-        small = new PriorityQueue<>((a, b) -> b - a); // max-heap
-        large = new PriorityQueue<>(); // min-heap
+        maxHeap = new PriorityQueue<>(Collections.reverseOrder()); // max-heap
+        minHeap = new PriorityQueue<>(); // min-heap
     }
     
     public void addNum(int num) {
-        // Step 1: add to max-heap
-        small.offer(num);
-
-        // Step 2: balance heaps so that every num in small <= every num in large
-        large.offer(small.poll());
-
-        // Step 3: keep size property (small can have 1 more than large)
-        if (small.size() < large.size()) {
-            small.offer(large.poll());
+        // Step 1: Add to maxHeap first
+        maxHeap.offer(num);
+        
+        // Step 2: Balance -> move top of maxHeap to minHeap
+        minHeap.offer(maxHeap.poll());
+        
+        // Step 3: Ensure size property (maxHeap >= minHeap)
+        if (maxHeap.size() < minHeap.size()) {
+            maxHeap.offer(minHeap.poll());
         }
     }
     
     public double findMedian() {
-        if (small.size() > large.size()) {
-            return small.peek(); // odd case
+        if (maxHeap.size() > minHeap.size()) {
+            return maxHeap.peek(); // odd case
+        } else {
+            return (maxHeap.peek() + minHeap.peek()) / 2.0; // even case
         }
-        return (small.peek() + large.peek()) / 2.0; // even case
     }
 }
