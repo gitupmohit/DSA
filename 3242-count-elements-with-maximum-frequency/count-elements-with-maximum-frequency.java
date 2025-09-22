@@ -10,12 +10,14 @@ class Solution {
             // map.put(nums[i] , map.getOrDefault(nums[i] , 0) + 1);
             // max = Math.max(max, map.get(nums[i]));
             hash[nums[i]]++;
-        }
-
-        for(int i=0; i<n; i++){
             int val = hash[nums[i]];
             max = Math.max(max,val);
         }
+
+        // for(int i=0; i<n; i++){
+        //     int val = hash[nums[i]];
+        //     max = Math.max(max,val);
+        // }
 
         for(int i=0; i<n; i++){
             int val = hash[nums[i]];
