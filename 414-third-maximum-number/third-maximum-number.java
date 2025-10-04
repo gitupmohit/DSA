@@ -3,7 +3,6 @@ class Solution {
         Arrays.sort(nums);
         int n = nums.length;
         int ans = nums[n-1];
-        int max = nums[n-1];
         int c = 1;
         for(int i =n-2; i >= 0; i--){
             if(nums[i] != ans){
@@ -13,8 +12,7 @@ class Solution {
                 }
                 ans = nums[i];
             }
-            max = Math.max(max , nums[i]);
         }
-        return max;
+        return nums[n-1];
     }
 }
